@@ -1,0 +1,20 @@
+name: Reproducible evaluation
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ['3.10', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python evaluation.py verify
+      - run: python -m unittest -v
+      - run: python verify_release.py
+      - run: python evaluation.py demo --output outputs/demo.json
+      - run: python -c "import json,pathlib; assert json.loads(pathlib.Path('outputs/demo.json').read_text()) == json.loads(pathlib.Path('reports/DEMO_OUTPUT.json').read_text())"
