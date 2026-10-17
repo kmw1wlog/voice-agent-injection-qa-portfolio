@@ -41,6 +41,10 @@ The sample is designed for authorized isolated evaluation only. It is not a live
 
 ## Public portfolio release
 
+![Actual scripted offline evaluation report](media/demo-report.jpg)
+
+[Open the rendered report](media/demo-report.html). This captured report uses the committed eight-case demo output; it is not a screenshot of new model inference.
+
 This clean-history release contains QA code, authored fixtures, synthetic research aggregates, Risk Cells and client-delivery examples. No original model-response archive, customer data, deployment endpoints, weights or financial-pricing research is included.
 
 [Reproduction and provenance](docs/PROVENANCE.md) · [Release checks](VALIDATION.json) · [Code license](LICENSE)
